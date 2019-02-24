@@ -22,9 +22,14 @@
 </head>
 <body>
 	<div id="app">
+		<!--this is  use array  to show -->
         <h1 :class="['red','thin','italic']">this is a big h1!!!</h1>
+        <!-- this is use express-->
 		<h1 :class="['red','thin',flag?'active':'']">this is a big h1!!!</h1>
+		<!--this is use array and object to show-->
 		<h1 :class="['red','thin', {'active':flag}]">this is a big h1!!!</h1>
+		<!--this is use only object to show -->
+		<h1 :class="{red:true,thin:false,active:flag,italic:true}">this is a big h1!!!</h1>
 	</div>
 </body>
 	<script type="text/javascript">
@@ -34,7 +39,7 @@
 			data: {
 				content: "hello world",
 				hello:"good",
-				flag:true,
+				flag:false,
 			}
 
 

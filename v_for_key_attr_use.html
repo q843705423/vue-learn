@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--v-for 循环的时候，key属性只能使用string or number-->
+    <!--注意要指定key的值,当处于一些特殊情况的时候-->
+   <p v-for="item in list" key="id">{{item.id}}------------{{item.name}}</p>
+    <div>
+   <label for="">id</label>
+
+    <input type="input" v-model="id">
+     <label for="">name</label>
+    <input type="input" v-model="name">
+    <input type="button" value="add" @click="add">
+
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            id:"",
+            name:"",
+            list:[
+
+                {id:"1",name:"王位"},
+                {id:"2",name:"王位"},
+                {id:"3",name:"王位"},
+                {id:"4",name:"王位"},
+                {id:"5",name:"啊是大"},
+            ]
+        },
+        methods:{
+            add(){
+                this.list.push({id:this.id,name:this.name})
+                this.list.unshift({id:this.id,name:this.name})
+            }
+        }
+    })
+</script>
