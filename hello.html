@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<title></title>
+	<style>
+		.red{
+			color:red;
+
+		}
+		.thin{
+			font-weight: 200;
+		}
+		.italic{
+			font-style:italic;
+		}
+		.active{
+            letter-spacing:0.5em;
+		}
+
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+        <h1 :class="['red','thin','italic']">this is a big h1!!!</h1>
+		<h1 :class="['red','thin',flag?'active':'']">this is a big h1!!!</h1>
+		<h1 :class="['red','thin', {'active':flag}]">this is a big h1!!!</h1>
+	</div>
+</body>
+	<script type="text/javascript">
+
+		 new Vue({
+			el: "#app",
+			data: {
+				content: "hello world",
+				hello:"good",
+				flag:true,
+			}
+
+
+		});
+		 console.log("hello world")
+	</script>
+</html>
