@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vueRouter.js"></script>
+    <style>
+        .myLinkActive,
+        .router-link-active{
+            color: #f00;
+            font-weight: 800;
+            font-style: italic;
+            text-decoration: red;
+        }
+        .v-enter,.v-leave-to{
+           opacity: 0;transform:translateX(140px)
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition:0.5s
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--router-link 默认渲染了一个a标签-->
+    <!--想要渲染成别的标签，只要用tag就可以了，且不影响点击事件-->
+    <router-link to="/login" >登录</router-link>
+    <router-link to="/register">注册</router-link>
+    <!--这是Vue的提供的元素，专门用来当作占位符-->
+    <transition mode="out-in">
+        <router-view></router-view>
+    </transition>
+</div>
+</body>
+<script>
+    <!--在导入了vue-router.js后,就有了一个创建路由对象的构造函数-->
+    //在new 路由对象的时候，可以传递一个配置对象
+    //
+    var login = {
+        template: "<h1>登陆组件</h1>"
+    };
+    var register = {
+        template: "<h1>注册组件</h1>"
+    };
+    //Vue-router为我们提供了一个类
+    var routerObj = new VueRouter({
+        //每个路由规则 都是一个对象，这个对象一定要有两个属性
+        // 属性1 path 表示监听哪个路由链接地址
+        // 属性2 component 表示如果是路由匹配到的path，则展示component component component component component
+        // 注意！component 的属性值必须是一个component的对象，而不是一个字符串
+        routes:[ //路由匹配规则
+            {
+                path:"/login",
+                component:login
+            },{
+                path:"/register",
+                component:register
+            },{
+                path:"/",
+                redirect: "/login",  //这里的redirect和node里的完全是两码事
+                component:login
+            }
+
+        ],
+        linkActiveClass:"myLinkActive"
+    });
+
+
+    new Vue({
+        el:"#app",
+        data:{
+
+        },
+        //把路由规则对象注册到vm实例上，然后监听URL变化，来展示
+        router:routerObj
+
+    })
+</script>
+</html>
