@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue_resource.min.js"></script>
+</head>
+<body>
+<div id="app">
+   <div v-for="item in list" id="item.id">
+       {{ item.id }} -------------{{item.name}}
+   </div>
+    <div>
+        <input type="text" v-model="name">
+        <input type="button" value="add" @click="getList">
+    </div>
+</div>
+<script>
+    function hello(){
+        alert("hello")
+    }
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:"",
+            list:[
+                {id:1,name:"武林宏观"},
+                {id:2,name:"红旗"},
+            ]
+        },
+        methods:{
+            add(){
+                alert(1)
+            },
+            getList(){
+                this.$http.jsonp('http://127.0.0.1:8080/list?callback=hello').then(function(res){
+                   var data = res.body;
+                    this.list = this.list.concat(data)
+                   console.log(data)
+                })
+            },
+        },
+        created(){
+            // this.getList()
+        }
+
+
+
+    })
+</script>
+</body>
+</html>

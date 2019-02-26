@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue_resource.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- Vue.extend 来实现 全局的 Vue 组件 -->
+    <!-- 1. 使用 Vue.componet('组件名',创建出来的组件模板对象)-->
+    <!--如果组件名含有驼峰命名法，那么在引用组件的时候，需要把大写的驼峰改成小写-->
+    <!--同时,两个单词之间，使用横线进行连接-->
+    <!--如果不使用驼峰，则直接拿名称来引用-->
+    <my-com1></my-com1>
+</div>
+</body>
+<script>
+    var com1 = Vue.extend({
+        template: '<h3>this is a component</h3>'
+    })
+    Vue.component('myCom1',com1)
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+</script>
+</html>

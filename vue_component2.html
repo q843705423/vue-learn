@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue_resource.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <mycom2></mycom2>
+</div>
+</body>
+<script>
+
+    <!--template only should one root-->
+    //只能有一个根元素在那里
+    Vue.component("mycom2", {
+        template: "<h3>这是直接使用component创建的组件</h3>"
+    })
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+</script>
+</html>
