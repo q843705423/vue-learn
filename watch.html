@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 我们需要监听文本框的改变，才能去拼接出一个fullName-->
+    <input type="text" v-model="firstName" @keyup="getFullName">
+    +
+    <input type="text" v-model="lastName" @keyup="getFullName">
+    =
+    <input type="text" v-model="fullName">
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            firstName:"",
+            lastName:"",
+            fullName:"",
+
+        },
+        methods:{
+            getFullName(){
+                this.fullName = this.firstName + " " +   this.lastName
+            }
+        }
+    })
+</script>
+</html>

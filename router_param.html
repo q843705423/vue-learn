@@ -40,7 +40,12 @@
         data:{
 
         },
-        router:routerObj
+        router:routerObj,
+        watch:{
+            "$route.path":function(old,newVal){
+                console.log(old+" "+newVal)
+            }
+        }
     })
 </script>
 </html>

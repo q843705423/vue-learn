@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vueRouter.js"></script>
+    <style>
+        .header{
+            background: #234566;
+        }
+        .container{
+            display:flex
+        }
+        .left{
+            background: aqua;
+            flex:2;
+            height:340px;
+
+        }
+        .main{
+            background: green;
+            flex:8;
+            height:340px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+    <div class="container">
+        <router-view name="left"></router-view>
+        <router-view name="main"></router-view>
+    </div>
+</div>
+</body>
+<script>
+    var header = {
+        template: "<h1 class='header'>这是头部区域</h1>"
+    }
+    var leftBox = {
+        template: "<h1 class='left'>这是侧边栏区域</h1>"
+    }
+    var mainBox = {
+        template: "<h1 class='main'>这是主区域</h1>"
+    }
+    //多视图展示，对该路由使用许多组件，只要用components属性,并且加多个坑就可以了
+    var router = new VueRouter({
+        routes:[
+            // {path:"/left",component:leftBox},
+            // {path:"/",component:header},
+            // {path:"/main",component:mainBox}
+            {
+                path:"/",
+                components:{
+                    default:header,
+                    left:leftBox,
+                    main:mainBox,
+
+                }},
+            {path:"/main",component:mainBox}
+        ]
+    })
+    new Vue({
+        el:"#app",
+        data:{
+
+        },
+        router:router
+    })
+
+</script>
+</html>

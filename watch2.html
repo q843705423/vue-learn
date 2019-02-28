@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="firstName" >
+    +
+    <input type="text" v-model="lastName" >
+    =
+    <input type="text" v-model="fullName">
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            firstName:"",
+            lastName:"",
+            fullName:"",
+
+        },
+        methods:{
+            getFullName(){
+                this.fullName = this.firstName + " " +   this.lastName
+            }
+        },
+        //watch可以监视data上的所有数据改变
+        watch:{
+            firstName:function(){
+                this.fullName = this.firstName + " " +   this.lastName
+            },
+            lastName:function(newValue,oldValue){
+                this.fullName = this.firstName + " " +   this.lastName
+            }
+
+        }
+
+    })
+</script>
+</html>

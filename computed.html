@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="firstName" >
+    +
+    <input type="text" v-model="lastName" >
+    =
+    <input type="text" v-model="fullName">
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            firstName:"",
+            lastName:"",
+        },
+        methods:{
+            getFullName(){
+                this.fullName = this.firstName + " " +   this.lastName
+            }
+        },
+        //watch可以监视data上的所有数据改变
+        //计算属性，只要计算属性内部用到的任何data中的数据发生了变化，就会立即重新计算这个属性的值
+        //只要是计算属性，就一定是function，只要是watch，也是一个function
+        // 计算属性内部一定要return东西，watch属性则不用
+        // method属性也是function，但是它更侧重于业务逻辑的处理
+        //而computed只适合做简单的操作
+        computed:{
+            "fullName":function(){
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+    })
+</script>
+</html>
